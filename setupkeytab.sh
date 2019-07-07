@@ -16,15 +16,22 @@ echo "User name: $usernameplusdomain"
 
 set -x
 
-ktutil << EOF
-addent -password -p $usernameplusdomain -k $kvno -e RC4-HMAC
-$password
-rkt /etc/nginx/$localhost.HTTP.keytab
-rkt /etc/nginx/$localhost.hosts.keytab
-wkt user.keytab
-list
-exit
-EOF
+
+{
+  echo "addent -password -p $usernameplusdomain -k $kvno -e RC4-HMAC"
+  sleep 1
+  echo "${password}"
+  sleep 1
+  echo "rkt /etc/nginx/$localhost.HTTP.keytab"
+  sleep 1
+  echo "rkt /etc/nginx/$localhost.hosts.keytab"
+  sleep 1
+  echo "wkt user.keytab"
+  sleep 1
+  echo "list"
+} |
+ktutil
+
 
 kinit -kt user.keytab $usernameplusdomain -V
 set +x

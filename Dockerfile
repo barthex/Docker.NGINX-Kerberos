@@ -16,7 +16,7 @@ RUN apt-get update -y -qq && apt-get install -y --no-install-recommends \
 	iputils-ping
 
 RUN cd /usr/src && mkdir nginx \
-	&& curl -fSL https://nginx.org/download/nginx-1.13.12.tar.gz -o nginx.tar.gz \
+	&& curl -fSL https://nginx.org/download/nginx-1.17.1.tar.gz -o nginx.tar.gz \
 	&& tar -xzf nginx.tar.gz -C nginx --strip-components=1
 
 RUN cd /usr/src/nginx \
