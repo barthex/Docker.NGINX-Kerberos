@@ -3,7 +3,7 @@ Docker container for running NGINX as a reverse proxy with Kerberos Authenticati
 
 # Prereqiets
 > Domain Name \
-> The name for your ngnix docker (dockerAccount) \
+> The name for your ngnix docker (dockerAccount) 
 
 
 # Active Directory configuration
@@ -32,5 +32,5 @@ $ docker run -e domain='' -e dc='' -e dcip='' -e localhost='<dockerAccount>' -e 
 ```
 
 ## Remarks
- When connecting to nginx you shold use DNS name and not ip in order for the web browser user kerberso and not NTLM\
+ When connecting to nginx you should use DNS name and not ip in order for the web browser user kerberso and not NTLM\
  The  user will be in the basic authorization header
