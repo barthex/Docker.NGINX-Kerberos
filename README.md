@@ -23,7 +23,7 @@ C:\Windows\System32> ktpass -princ HTTP/<dockerAccount>.<domain>@<DOMAIN> -pass 
 
 ## Build the docker
 ```bash
-$ dockebuild . -t <dockerName>
+$ docke build . -t <dockerName>
 ```
 
 ## Run The docker using 
