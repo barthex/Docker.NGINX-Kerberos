@@ -2,8 +2,8 @@ FROM nginx:1.17.1
 
 LABEL Description="Nginx docker image with kerberos support" \
       BaseImageOS="debian" \
-      ImageBuildNumber="1" \
       NginxVersion="1.17.1" \
+      maintainer="Nir Kovalio <nirko@rnd-hub.com>" \
   	  BaseImageName="nginx"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -26,12 +26,12 @@ RUN cd /usr/src && mkdir nginx \
 	&& tar -xzf nginx.tar.gz -C nginx --strip-components=1
 
 RUN cd /usr/src/nginx \
-	&& git clone https://github.com/nirko-rnd/spnego-http-auth-nginx-module.git
+	&& git clone https://github.com/stnoonan/spnego-http-auth-nginx-module.git
 
 RUN cd /usr/src/nginx \
 	&& ./configure --with-compat --add-dynamic-module=spnego-http-auth-nginx-module \
 	&& make modules \
-	&& cp objs/ngx_http_auth_spnego_module.so /etc/nginx/modules/ 
+	&& cp objs/ngx_http_auth_spnego_module.so /etc/nginx/modules/
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY setupkeytab.sh /opt/install/setupkeytab.sh

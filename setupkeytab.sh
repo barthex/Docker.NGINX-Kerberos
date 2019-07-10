@@ -8,7 +8,7 @@ kvno=$4
 localhost=$5
 
 u="$(whoami)"
-echo "Running version 1.01 as: $u"
+echo "Running as: $u"
 
 usernameplusdomain="$username@$uppercasedomain"
 

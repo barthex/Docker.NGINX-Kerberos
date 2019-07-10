@@ -3,3 +3,4 @@
 *.iml
 /run.sh
 *.keytab
+/dockerBuild.sh

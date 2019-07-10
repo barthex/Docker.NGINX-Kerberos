@@ -11,7 +11,7 @@ Docker container for running NGINX as a reverse proxy with Kerberos Authenticati
 ### Create a new user on the AD
 Use the linux machine name as the user name
 ## Create the SPNs associated with this account
-Open command prompt as administrator
+Open command prompt as administrator in DC
 * replace the <> with your values
 ```shell
 C:\Windows\System32> setspn -A hosts/<dockerAccount>.<domain> <dockerAccount>
@@ -28,9 +28,14 @@ $ docke build . -t <dockerName>
 
 ## Run The docker using 
 ```bash
-$ docker run -e domain='' -e dc='' -e dcip='' -e localhost='<dockerAccount>' -e remoteip='' -e remoteport='' -e username='' -e password='' -e kvno=1 -p 80:80 <dockerName> 
+$ docker run -e domain='<domain>' -e dc='' -e dcip='' -e localhost='<dockerAccount>' -e remoteip='' -e remoteport='' -e username='' -e password='' -e kvno=1 -e listenPort=80 -p 80:80 <dockerName> 
 ```
 
 ## Remarks
- When connecting to nginx you should use DNS name and not ip in order for the web browser user kerberso and not NTLM\
+ When connecting to Nginx you should use DNS name and not ip in order for the web browser use kerberos and not NTLM\
  The  user will be in the basic authorization header
+ 
+ In Order for Chrome to work with kerberos you should run it with 
+```console
+chrome.exe --auth-server-whitelist="<domain>" --auth-negotiate-delegate-whitelist="<domain>" 
+```
