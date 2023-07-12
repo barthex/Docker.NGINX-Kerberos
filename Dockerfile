@@ -40,7 +40,7 @@ COPY configurekerberos.sh /opt/install/configurekerberos.sh
 COPY configuredns.sh /opt/install/configuredns.sh
 
 COPY entrypoint.sh /opt/install/entrypoint.sh
-COPY *.keytab /etc/nginx/
+#COPY *.keytab /etc/nginx/
 
 RUN chmod +x /opt/install/setupkeytab.sh \
     && chmod +x /opt/install/configurenginx.sh \
