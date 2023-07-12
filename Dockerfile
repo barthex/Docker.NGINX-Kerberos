@@ -1,8 +1,8 @@
-FROM nginx:1.17.1
+FROM nginx:1.25.1
 
 LABEL Description="Nginx docker image with kerberos support" \
       BaseImageOS="debian" \
-      NginxVersion="1.17.1" \
+      NginxVersion="1.25.1" \
       maintainer="Nir Kovalio <nirko@rnd-hub.com>" \
   	  BaseImageName="nginx"
 
@@ -22,7 +22,7 @@ RUN apt-get update -y -qq && apt-get install -y --no-install-recommends \
 	iputils-ping
 
 RUN cd /usr/src && mkdir nginx \
-	&& curl -fSL https://nginx.org/download/nginx-1.17.1.tar.gz -o nginx.tar.gz \
+	&& curl -fSL https://nginx.org/download/nginx-1.25.1.tar.gz -o nginx.tar.gz \
 	&& tar -xzf nginx.tar.gz -C nginx --strip-components=1
 
 RUN cd /usr/src/nginx \
