@@ -8,23 +8,23 @@ kvno=$4
 localhost=$5
 
 u="$(whoami)"
-echo "Running as: $u"
+echo "Running as: ${u}"
 
-usernameplusdomain="$username@$uppercasedomain"
+usernameplusdomain="${username}@${uppercasedomain}"
 
-echo "User name: $usernameplusdomain"
+echo "User name: ${usernameplusdomain}"
 
 set -x
 
 
 {
-  echo "addent -password -p $usernameplusdomain -k $kvno -e RC4-HMAC"
+  echo "addent -password -p ${usernameplusdomain} -k ${kvno} -e RC4-HMAC"
   sleep 1
   echo "${password}"
   sleep 1
-  echo "rkt /etc/nginx/$localhost.HTTP.keytab"
+  echo "rkt /etc/nginx/${localhost}.HTTP.keytab"
   sleep 1
-  echo "rkt /etc/nginx/$localhost.hosts.keytab"
+  echo "rkt /etc/nginx/${localhost}.hosts.keytab"
   sleep 1
   echo "wkt user.keytab"
   sleep 1
@@ -33,5 +33,5 @@ set -x
 ktutil
 
 
-kinit -kt user.keytab $usernameplusdomain -V
+kinit -kt user.keytab ${usernameplusdomain} -V
 set +x

@@ -10,4 +10,3 @@ chown root:nginx /etc/nginx/user.keytab
 
 echo "Running nginx"
 exec nginx -g "daemon off;"
-#exec /bin/bash
